@@ -44,7 +44,7 @@ def get_restaurant_by_id(restaurantID):
 @app.route("/dishes/<dishID>", methods=["GET"])
 def get_dish_by_id(dishID):
 
-    result = RestaurantResource.get_by_key(dishID)
+    result = RestaurantResource.get_by_key_dish(dishID)
 
     if result:
         rsp = Response(json.dumps(result), status=200, content_type="application.json")
