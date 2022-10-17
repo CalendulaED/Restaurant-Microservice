@@ -35,3 +35,13 @@ class RestaurantResource:
         result = cur.fetchone()
 
         return result
+
+    @staticmethod
+    def get_by_key_dish(key):
+        sql = "SELECT * FROM restaurant_databases.Dish where dish_id=%s";
+        conn = RestaurantResource._get_connection()
+        cur = conn.cursor()
+        res = cur.execute(sql, args=key)
+        result = cur.fetchone()
+
+        return result

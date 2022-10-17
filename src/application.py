@@ -30,7 +30,7 @@ CORS(app)
 
 
 @app.route("/restaurants/<restaurantID>", methods=["GET"])
-def get_student_by_uni(restaurantID):
+def get_restaurant_by_id(restaurantID):
 
     result = RestaurantResource.get_by_key(restaurantID)
 
@@ -41,6 +41,17 @@ def get_student_by_uni(restaurantID):
 
     return rsp
 
+@app.route("/dishes/<dishID>", methods=["GET"])
+def get_dish_by_id(dishID):
+
+    result = RestaurantResource.get_by_key(dishID)
+
+    if result:
+        rsp = Response(json.dumps(result), status=200, content_type="application.json")
+    else:
+        rsp = Response("NOT FOUND", status=404, content_type="text/plain")
+
+    return rsp
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5011)
