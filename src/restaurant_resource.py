@@ -75,5 +75,3 @@ class RestaurantResource:
         result = cur.fetchall()
 
         return result
-
-
