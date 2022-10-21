@@ -53,5 +53,29 @@ def get_dish_by_id(dishID):
 
     return rsp
 
+@app.route("/dishes", methods=["GET"])
+def get_dish():
+
+    result = RestaurantResource.get_all_dish()
+
+    if result:
+        rsp = Response(json.dumps(result), status=200, content_type="application.json")
+    else:
+        rsp = Response("NOT FOUND", status=404, content_type="text/plain")
+
+    return rsp
+
+@app.route("/restaurants", methods=["GET"])
+def get_restaurant():
+
+    result = RestaurantResource.get_all_restaurant()
+
+    if result:
+        rsp = Response(json.dumps(result), status=200, content_type="application.json")
+    else:
+        rsp = Response("NOT FOUND", status=404, content_type="text/plain")
+
+    return rsp
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5011)
