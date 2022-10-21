@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cc4d8f61-ab31-42f8-87ca-16e5a6e8f1cd" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Restaurant-Microservice.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Restaurant-Microservice.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/application.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/application.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/restaurant_resource.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/restaurant_resource.py" afterDir="false" />
     </list>
@@ -70,7 +67,7 @@
       <option name="presentableId" value="Default" />
       <updated>1666045771335</updated>
       <workItem from="1666045774588" duration="2795000" />
-      <workItem from="1666375186567" duration="768000" />
+      <workItem from="1666375186567" duration="4052000" />
     </task>
     <servers />
   </component>
@@ -90,6 +87,6 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Restaurant_Microservice$application.coverage" NAME="application Coverage Results" MODIFIED="1666046390132" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
-    <SUITE FILE_PATH="coverage/Restaurant_Microservice$rest.coverage" NAME="rest Coverage Results" MODIFIED="1666046454978" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/Restaurant_Microservice$rest.coverage" NAME="rest Coverage Results" MODIFIED="1666379426339" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
   </component>
 </project>
