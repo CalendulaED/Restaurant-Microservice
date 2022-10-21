@@ -65,3 +65,13 @@ class RestaurantResource:
         result = cur.fetchall()
 
         return result
+
+    @staticmethod
+    def insert_restaurant(rest_id, rest_name, rest_location, rest_size):
+        sql = "INSERT INTO restaurant_databases.Restaurant VALUES (%s, %s, %s, %s)";
+        conn = RestaurantResource._get_connection()
+        cur = conn.cursor()
+        res = cur.execute(sql, args=(rest_id, rest_name, rest_location, rest_size))
+        result = cur.fetchall()
+
+        return result
