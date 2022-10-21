@@ -45,3 +45,23 @@ class RestaurantResource:
         result = cur.fetchone()
 
         return result
+
+    @staticmethod
+    def get_all_dish():
+        sql = "SELECT * FROM restaurant_databases.Dish";
+        conn = RestaurantResource._get_connection()
+        cur = conn.cursor()
+        res = cur.execute(sql)
+        result = cur.fetchall()
+
+        return result
+
+    @staticmethod
+    def get_all_restaurant():
+        sql = "SELECT * FROM restaurant_databases.Restaurant";
+        conn = RestaurantResource._get_connection()
+        cur = conn.cursor()
+        res = cur.execute(sql)
+        result = cur.fetchall()
+
+        return result
