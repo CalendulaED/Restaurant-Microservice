@@ -45,3 +45,4 @@ class RestaurantResource:
         result = cur.fetchone()
 
         return result
+
