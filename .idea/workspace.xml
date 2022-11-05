@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cc4d8f61-ab31-42f8-87ca-16e5a6e8f1cd" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/Restaurant-Microservice.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Restaurant-Microservice.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/application.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/restaurant_resource.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/restaurant_resource.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,12 +39,12 @@
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-        <env name="DBHOST" value="restaurants.cgioapx0z5ik.us-east-1.rds.amazonaws.com" />
+        <env name="DBHOST" value="restaurant.cgioapx0z5ik.us-east-1.rds.amazonaws.com" />
         <env name="DBPW" value="adminrestaurants" />
         <env name="DBUSER" value="admin" />
+        <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="$PROJECT_DIR$/venv/bin/python" />
+      <option name="SDK_HOME" value="$USER_HOME$/.conda/envs/Restaurant-Microservice/bin/python" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -85,6 +89,6 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Restaurant_Microservice$application.coverage" NAME="application Coverage Results" MODIFIED="1666046390132" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
-    <SUITE FILE_PATH="coverage/Restaurant_Microservice$rest.coverage" NAME="rest Coverage Results" MODIFIED="1666379426339" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/Restaurant_Microservice$rest.coverage" NAME="rest Coverage Results" MODIFIED="1667639097341" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
   </component>
 </project>
