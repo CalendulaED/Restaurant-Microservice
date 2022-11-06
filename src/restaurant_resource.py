@@ -71,4 +71,5 @@ class RestaurantResource:
         cur = conn.cursor()
         res = cur.execute(sql, args=(rest_id, rest_name, rest_location, rest_size))
         # result = cur.fetchone()
+
         return res

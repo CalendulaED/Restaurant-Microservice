@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+
     <list default="true" id="77a979c4-157c-4ce4-a794-29bf9c04bae4" name="Changes" comment="">
+
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/application.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/application.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/restaurant_resource.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/restaurant_resource.py" afterDir="false" />
@@ -37,6 +39,7 @@
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
+
         <env name="PYTHONUNBUFFERED" value="1" />
         <env name="DBUSER" value="admin" />
         <env name="DBPW" value="adminrestaurants" />
@@ -67,7 +70,7 @@
         <env name="DBUSER" value="admin" />
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="$PROJECT_DIR$/venv/bin/python" />
+      <option name="SDK_HOME" value="$USER_HOME$/.conda/envs/Restaurant-Microservice/bin/python" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -121,7 +124,9 @@
     </option>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+
     <SUITE FILE_PATH="coverage/Restaurant_Microservice$rest.coverage" NAME="rest Coverage Results" MODIFIED="1667531676183" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/Restaurant_Microservice$application.coverage" NAME="application Coverage Results" MODIFIED="1666387711238" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+
   </component>
 </project>
