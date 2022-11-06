@@ -2,15 +2,14 @@ import pymysql
 
 import os
 
+
 class RestaurantResource:
-    
+
     def __init__(self):
         pass
 
     @staticmethod
     def _get_connection():
-
-
         usr = os.environ.get("DBUSER")
         pw = os.environ.get("DBPW")
         h = os.environ.get("DBHOST")
@@ -27,7 +26,6 @@ class RestaurantResource:
 
     @staticmethod
     def get_by_key(key):
-
         sql = "SELECT * FROM restaurant_databases.Restaurant where rest_id=%s";
         conn = RestaurantResource._get_connection()
         cur = conn.cursor()
@@ -73,5 +71,5 @@ class RestaurantResource:
         cur = conn.cursor()
         res = cur.execute(sql, args=(rest_id, rest_name, rest_location, rest_size))
         # result = cur.fetchone()
-        return res
 
+        return res
