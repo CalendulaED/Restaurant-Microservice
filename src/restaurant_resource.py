@@ -47,8 +47,9 @@ class RestaurantResource:
         return result
 
     @staticmethod
-    def get_all_dish():
-        sql = "SELECT * FROM restaurant_databases.Dish";
+    def get_all_restaurant():
+        # get all restaurants result
+        sql = "SELECT * FROM restaurant_databases.Restaurant";
         conn = RestaurantResource._get_connection()
         cur = conn.cursor()
         res = cur.execute(sql)
@@ -57,14 +58,17 @@ class RestaurantResource:
         return result
 
     @staticmethod
-    def get_all_restaurant():
-        sql = "SELECT * FROM restaurant_databases.Restaurant";
+    def get_all_dish():
+        # get all dish result
+        sql = "SELECT * FROM restaurant_databases.Dish";
         conn = RestaurantResource._get_connection()
         cur = conn.cursor()
         res = cur.execute(sql)
         result = cur.fetchall()
 
         return result
+
+
 
     @staticmethod
     def insert_restaurant(rest_id, rest_name, rest_location, rest_size):
