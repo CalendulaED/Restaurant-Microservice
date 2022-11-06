@@ -77,21 +77,23 @@ def get_restaurant():
 
     return rsp
 
-@app.route("/add", methods=["POST"])
+
+@app.route("/restaurants", methods=["POST"])
 def add_restaurant():
     post_data = request.get_json()
     print('The origin parameter is: ', post_data)
     rest_id = str(post_data.get('rest_id')).strip(),
     rest_name = str(post_data.get('rest_name')).strip(),
     rest_location = str(post_data.get('rest_location')).strip(),
-    rest_size = post_data.get('rest_size')
+    rest_size = str(post_data.get('rest_size')).strip()
 
     result = RestaurantResource.insert_restaurant(rest_id, rest_name, rest_location, rest_size)
+    result_dic = {'rest_id': rest_id, 'rest_name': rest_name, 'rest_location': rest_location, 'rest_size': rest_size}
 
     if result:
-        rsp = Response(json.dumps(result), status=200, content_type="application.json")
+        rsp = Response(json.dumps(result_dic), status=200, content_type="application.json")
     else:
-        rsp = Response("NOT FOUND", status=404, content_type="text/plain")
+        rsp = Response("Insert Failed! (Duplicate data)", status=404, content_type="text/plain")
 
     return rsp
 
