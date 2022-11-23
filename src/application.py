@@ -4,6 +4,7 @@ import json
 from restaurant_resource import RestaurantResource
 from flask_cors import CORS
 
+from smarty import check_address
 
 # Create the Flask application object.
 app = Flask(__name__,
@@ -41,6 +42,41 @@ def get_restaurant_by_id(restaurantID):
 
     return rsp
 
+@app.route("/restaurants/<restaurantID>", methods=["PUT"])
+def update_restaurant(restaurantID):
+    update_data = request.get_json()
+    print('The origin parameter is: ', update_data)
+    rest_name = str(update_data.get('rest_name')).strip(),
+    rest_location = str(update_data.get('rest_location')).strip(),
+    rest_size = str(update_data.get('rest_size')).strip()
+
+    rest_location = check_address(rest_location)
+    if rest_location is None:
+        rsp = Response("Update Failed! (Bad address)", status=404, content_type="text/plain")
+        return rsp
+
+    result = RestaurantResource.update_restaurant(rest_name, rest_location, rest_size, restaurantID)
+    result_dic = {'rest_id': restaurantID, 'rest_name': rest_name, 'rest_location': rest_location, 'rest_size': rest_size}
+
+    if result:
+        rsp = Response(json.dumps(result_dic), status=200, content_type="application.json")
+    else:
+        rsp = Response("Update Failed! (Duplicate data or bad input parameter)", status=404, content_type="text/plain")
+
+    return rsp
+
+@app.route("/restaurants/<restaurantID>", methods=["DELETE"])
+def delete_restaurant(restaurantID):
+
+    result = RestaurantResource.delete_restaurant(restaurantID)
+
+    if result:
+        rsp = Response("Deleted", status=200, content_type="text/plain")
+    else:
+        rsp = Response("NOT FOUND", status=404, content_type="text/plain")
+
+    return rsp
+
 @app.route("/dishes/<dishID>", methods=["GET"])
 def get_dish_by_id(dishID):
 
@@ -48,6 +84,37 @@ def get_dish_by_id(dishID):
 
     if result:
         rsp = Response(json.dumps(result), status=200, content_type="application.json")
+    else:
+        rsp = Response("NOT FOUND", status=404, content_type="text/plain")
+
+    return rsp
+
+@app.route("/dishes/<dishID>", methods=["PUT"])
+def update_dish(dishID):
+    update_data = request.get_json()
+    print('The origin parameter is: ', update_data)
+    dish_name = str(update_data.get('dish_name')).strip(),
+    flavor = str(update_data.get('flavor')).strip(),
+    dish_description = str(update_data.get('dish_description')).strip()
+    serve_size = str(update_data.get('serve_size')).strip()
+
+    result = RestaurantResource.update_dish(dish_name, flavor, dish_description, serve_size, dishID)
+    result_dic = {'dish_id': dishID, 'dish_name': dish_name, 'flavor': flavor, 'dish_description': dish_description, 'serve_size': serve_size}
+
+    if result:
+        rsp = Response(json.dumps(result_dic), status=200, content_type="application.json")
+    else:
+        rsp = Response("Update Failed! (Duplicate data or bad input parameter)", status=404, content_type="text/plain")
+
+    return rsp
+
+@app.route("/dishes/<dishID>", methods=["DELETE"])
+def delete_dish(dishID):
+
+    result = RestaurantResource.delete_dish(dishID)
+
+    if result:
+        rsp = Response("Deleted", status=200, content_type="text/plain")
     else:
         rsp = Response("NOT FOUND", status=404, content_type="text/plain")
 
@@ -65,10 +132,30 @@ def get_dish():
 
     return rsp
 
+@app.route("/dishes", methods=["POST"])
+def add_dish():
+    post_data = request.get_json()
+    print('The origin parameter is: ', post_data)
+    dish_id = str(post_data.get('dish_id')).strip(),
+    dish_name = str(post_data.get('dish_name')).strip(),
+    flavor = str(post_data.get('flavor')).strip(),
+    dish_description = str(post_data.get('dish_description')).strip()
+    serve_size = str(post_data.get('serve_size')).strip()
+
+    result = RestaurantResource.insert_dish(dish_id, dish_name, flavor, dish_description, serve_size)
+    result_dic = {'dish_id': dish_id, 'dish_name': dish_name, 'flavor': flavor, 'dish_description': dish_description, 'serve_size': serve_size}
+
+    if result:
+        rsp = Response(json.dumps(result_dic), status=200, content_type="application.json")
+    else:
+        rsp = Response("Insert Failed! (Duplicate data)", status=404, content_type="text/plain")
+
+    return rsp
+
 @app.route("/restaurants", methods=["GET"])
 def get_restaurant():
-
-    result = RestaurantResource.get_all_restaurant()
+    args = request.args
+    result = RestaurantResource.get_all_restaurant(args)
 
     if result:
         rsp = Response(json.dumps(result), status=200, content_type="application.json")
@@ -86,6 +173,11 @@ def add_restaurant():
     rest_name = str(post_data.get('rest_name')).strip(),
     rest_location = str(post_data.get('rest_location')).strip(),
     rest_size = str(post_data.get('rest_size')).strip()
+
+    rest_location = check_address(rest_location)
+    if rest_location is None:
+        rsp = Response("Insert Failed! (Bad address)", status=404, content_type="text/plain")
+        return rsp
 
     result = RestaurantResource.insert_restaurant(rest_id, rest_name, rest_location, rest_size)
     result_dic = {'rest_id': rest_id, 'rest_name': rest_name, 'rest_location': rest_location, 'rest_size': rest_size}
