@@ -120,18 +120,22 @@ class RestaurantResource:
 
     @staticmethod
     def delete_restaurant(key):
-        sql = "DELETE FROM restaurant_databases.Restaurant where rest_id = %s";
+        sql1 = "DELETE FROM restaurant_databases.Serve where rest_id = %s";
+        sql2 = "DELETE FROM restaurant_databases.Restaurant where rest_id = %s";
         conn = RestaurantResource._get_connection()
         cur = conn.cursor()
-        res = cur.execute(sql, args=key)
+        cur.execute(sql1, args=key)
+        res = cur.execute(sql2, args=key)
 
         return res
 
     @staticmethod
     def delete_dish(key):
-        sql = "DELETE FROM restaurant_databases.Dish where dish_id = %s";
+        sql1 = "DELETE FROM restaurant_databases.Serve where dish_id = %s";
+        sql2 = "DELETE FROM restaurant_databases.Dish where dish_id = %s";
         conn = RestaurantResource._get_connection()
         cur = conn.cursor()
-        res = cur.execute(sql, args=key)
+        cur.execute(sql1, args=key)
+        res = cur.execute(sql2, args=key)
 
         return res
