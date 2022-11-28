@@ -5,6 +5,7 @@ from restaurant_resource import RestaurantResource
 from flask_cors import CORS
 
 from smarty import check_address
+import datetime
 
 # Create the Flask application object.
 app = Flask(__name__,
@@ -188,6 +189,82 @@ def add_restaurant():
         rsp = Response("Insert Failed! (Duplicate data)", status=404, content_type="text/plain")
 
     return rsp
+
+
+@app.route("/serves", methods=["POST"])
+def add_serve():
+    post_data = request.get_json()
+    print('The origin parameter is: ', post_data)
+    rest_id = str(post_data.get('rest_id')).strip(),
+    dish_id = str(post_data.get('dish_id')).strip(),
+    # serve_time = str(post_data.get('serve_time')).strip(),
+    price = str(post_data.get('price')).strip()
+    serve_time = datetime.datetime.now()
+
+    result = RestaurantResource.insert_serve(rest_id, dish_id, serve_time, price)
+    result_dic = {'rest_id': rest_id, 'dish_id': dish_id, 'serve_time': str(serve_time), 'price': price}
+
+    if result:
+        rsp = Response(json.dumps(result_dic), status=200, content_type="application.json")
+    else:
+        rsp = Response("Insert Failed! (Duplicate data)", status=404, content_type="text/plain")
+
+    return rsp
+
+
+@app.route("/serves", methods=["GET"])
+def get_serve():
+    result = RestaurantResource.get_all_serve()
+    if result:
+        rsp = Response(json.dumps(result), status=200, content_type="application.json")
+    else:
+        rsp = Response("NOT FOUND", status=404, content_type="text/plain")
+
+    return rsp
+
+@app.route("/serves/<restID>/<dishID>", methods=["GET"])
+def get_serve_by_id(restID, dishID):
+
+    result = RestaurantResource.get_by_key_serve(restID, dishID)
+
+    if result:
+        rsp = Response(json.dumps(result), status=200, content_type="application.json")
+    else:
+        rsp = Response("NOT FOUND", status=404, content_type="text/plain")
+
+    return rsp
+
+
+@app.route("/serves/<restID>/<dishID>", methods=["PUT"])
+def update_serve(serve_time, price, restID, dishID):
+    update_data = request.get_json()
+    print('The origin parameter is: ', update_data)
+    serve_time = str(update_data.get('serve_time')).strip(),
+    price = str(update_data.get('price')).strip()
+
+    result = RestaurantResource.update_serve(serve_time, price, dishID, restID)
+    result_dic = {'serve_time': serve_time, 'price': price, 'dish_id': dishID, 'rest_id': restID}
+
+    if result:
+        rsp = Response(json.dumps(result_dic), status=200, content_type="application.json")
+    else:
+        rsp = Response("Update Failed! (Duplicate data or bad input parameter)", status=404, content_type="text/plain")
+
+    return rsp
+
+
+@app.route("/serves/<restID>/<dishID>", methods=["DELETE"])
+def delete_serve(restID, dishID):
+
+    result = RestaurantResource.delete_serve(restID, dishID)
+
+    if result:
+        rsp = Response("Deleted", status=200, content_type="text/plain")
+    else:
+        rsp = Response("NOT FOUND", status=404, content_type="text/plain")
+
+    return rsp
+
 
 
 if __name__ == "__main__":

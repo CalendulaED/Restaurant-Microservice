@@ -45,6 +45,16 @@ class RestaurantResource:
         return result
 
     @staticmethod
+    def get_by_key_serve(rest_id, dish_id):
+        sql = "SELECT * FROM restaurant_databases.Serve WHERE rest_id=%s AND dish_id=%s";
+        conn = RestaurantResource._get_connection()
+        cur = conn.cursor()
+        res = cur.execute(sql, args=(rest_id, dish_id))
+        result = cur.fetchone()
+
+        return result
+
+    @staticmethod
     def get_all_dish():
         sql = "SELECT * FROM restaurant_databases.Dish";
         conn = RestaurantResource._get_connection()
@@ -53,6 +63,16 @@ class RestaurantResource:
         result = cur.fetchall()
 
         return result
+
+    @staticmethod
+    def get_all_serve():
+        sql = "SELECT * FROM restaurant_databases.Serve";
+        conn = RestaurantResource._get_connection()
+        cur = conn.cursor()
+        res = cur.execute(sql)
+        result = cur.fetchall()
+
+        return str(result)
 
     @staticmethod
     def get_all_restaurant(args):
@@ -91,6 +111,15 @@ class RestaurantResource:
         return res
 
     @staticmethod
+    def insert_serve(rest_id, dish_id, serve_time, price):
+        sql = "INSERT IGNORE INTO restaurant_databases.Serve VALUES (%s, %s, %s, %s)";
+        conn = RestaurantResource._get_connection()
+        cur = conn.cursor()
+        res = cur.execute(sql, args=(rest_id, dish_id, serve_time, price))
+        # result = cur.fetchone()
+        return res
+
+    @staticmethod
     def insert_dish(dish_id, dish_name, flavor, dish_description, serve_size):
         sql = "INSERT IGNORE INTO restaurant_databases.Dish VALUES (%s, %s, %s, %s, %s)";
         conn = RestaurantResource._get_connection()
@@ -119,6 +148,15 @@ class RestaurantResource:
         return res
 
     @staticmethod
+    def update_serve(serve_time, price, dish_id, rest_id):
+        sql = "UPDATE restaurant_databases.Serve SET serve_time = %s, price = %s WHERE dish_id = %s AND rest_id = %s"
+        conn = RestaurantResource._get_connection()
+        cur = conn.cursor()
+        res = cur.execute(sql, args=(serve_time, price, dish_id, rest_id))
+
+        return res
+
+    @staticmethod
     def delete_restaurant(key):
         sql1 = "DELETE FROM restaurant_databases.Serve where rest_id = %s";
         sql2 = "DELETE FROM restaurant_databases.Restaurant where rest_id = %s";
@@ -139,3 +177,15 @@ class RestaurantResource:
         res = cur.execute(sql2, args=key)
 
         return res
+
+    @staticmethod
+    def delete_serve(rest_id, dish_id):
+        sql1 = "DELETE FROM restaurant_databases.Serve where rest_id = %s AND dish_id = %s";
+        conn = RestaurantResource._get_connection()
+        cur = conn.cursor()
+        res = cur.execute(sql1, args=(rest_id, dish_id))
+
+        return res
+
+
+
