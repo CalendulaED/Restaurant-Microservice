@@ -1,8 +1,8 @@
 version: 0.0
 os: linux
 files:
-  - source: /
-    destination: /
+  - source: ./src
+    destination: /home/ec2-user/Restaurant-Microservice/src
 hooks:
   AfterInstall:
     - location: Scripts/RunResourceTests.sh
