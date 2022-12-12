@@ -1,12 +1,12 @@
 version: 0.0
 os: linux
 files:
-  - source: ./src
-    destination: /Restaurant-Microservice/
+  - source: /
+    destination: /home/ec2-user/
 hooks:
-  AfterInstall:
-    - location: Scripts/RunResourceTests.sh
-      timeout: 180
+  # AfterInstall:
+  #   - location: Scripts/RunResourceTests.sh
+  #     timeout: 180
   ApplicationStart:
     - location: Scripts/RunFunctionalTests.sh
-      timeout: 3600
+      timeout: 300
