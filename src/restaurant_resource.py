@@ -101,6 +101,16 @@ class RestaurantResource:
         return result
 
     @staticmethod
+    def get_all_dishes_by_rest(restID):
+        sql = "SELECT * FROM restaurant_databases.Dish WHERE rest_id=%s";
+        conn = RestaurantResource._get_connection()
+        cur = conn.cursor()
+        res = cur.execute(sql, args=(restID))
+        result = cur.fetchall()
+
+        return str(result)
+
+    @staticmethod
     def insert_restaurant(rest_id, rest_name, rest_location, rest_size):
         sql = "INSERT IGNORE INTO restaurant_databases.Restaurant VALUES (%s, %s, %s, %s)";
         conn = RestaurantResource._get_connection()
@@ -120,11 +130,11 @@ class RestaurantResource:
         return res
 
     @staticmethod
-    def insert_dish(dish_id, dish_name, flavor, dish_description, serve_size):
-        sql = "INSERT IGNORE INTO restaurant_databases.Dish VALUES (%s, %s, %s, %s, %s)";
+    def insert_dish(dish_id, dish_name, flavor, dish_description, serve_size, rest_id):
+        sql = "INSERT IGNORE INTO restaurant_databases.Dish VALUES (%s, %s, %s, %s, %s, %s)";
         conn = RestaurantResource._get_connection()
         cur = conn.cursor()
-        res = cur.execute(sql, args=(dish_id, dish_name, flavor, dish_description, serve_size))
+        res = cur.execute(sql, args=(dish_id, dish_name, flavor, dish_description, serve_size, rest_id))
         # result = cur.fetchone()
 
         return res
@@ -139,11 +149,11 @@ class RestaurantResource:
         return res
 
     @staticmethod
-    def update_dish(dish_name, flavor, dish_description, serve_size, key):
-        sql = "UPDATE restaurant_databases.Dish SET dish_name = %s, flavor = %s, dish_description = %s, serve_size = %s WHERE dish_id = %s"
+    def update_dish(dish_name, flavor, dish_description, serve_size, rest_id, key):
+        sql = "UPDATE restaurant_databases.Dish SET dish_name = %s, flavor = %s, dish_description = %s, serve_size = %s, rest_id = %s WHERE dish_id = %s"
         conn = RestaurantResource._get_connection()
         cur = conn.cursor()
-        res = cur.execute(sql, args=(dish_name, flavor, dish_description, serve_size, key))
+        res = cur.execute(sql, args=(dish_name, flavor, dish_description, serve_size, rest_id, key))
 
         return res
 
