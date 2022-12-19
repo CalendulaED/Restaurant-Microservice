@@ -220,7 +220,7 @@ def add_serve():
 def get_serve():
     result = RestaurantResource.get_all_serve()
     if result:
-        rsp = Response(json.dumps(result), status=200, content_type="application.json")
+        rsp = Response(result, status=200)
     else:
         rsp = Response("NOT FOUND", status=404, content_type="text/plain")
 
@@ -274,11 +274,12 @@ def delete_serve(restID, dishID):
 def get_dishes_by_rest(restID):
     result = RestaurantResource.get_all_dishes_by_rest(restID)
     if result:
-        rsp = Response(json.dumps(result), status=200, content_type="application.json")
+        rsp = Response(result, status=200, content_type="application/json")
     else:
         rsp = Response("NOT FOUND", status=404, content_type="text/plain")
-
     return rsp
+
+
 
 
 if __name__ == "__main__":
