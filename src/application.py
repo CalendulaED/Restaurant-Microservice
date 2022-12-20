@@ -274,7 +274,7 @@ def delete_serve(restID, dishID):
 def get_dishes_by_rest(restID):
     result = RestaurantResource.get_all_dishes_by_rest(restID)
     if result:
-        rsp = Response(result, status=200, content_type="application/json")
+        rsp = Response(json.dumps(result), status=200, content_type="application.json")
     else:
         rsp = Response("NOT FOUND", status=404, content_type="text/plain")
     return rsp
